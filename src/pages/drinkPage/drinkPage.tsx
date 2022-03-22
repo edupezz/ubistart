@@ -49,7 +49,7 @@ export default function DrinkPage(){
 
     React.useEffect(() => {
         getSpecificDrinkByID()
-    }, [])
+    })
 
     console.log(api)
 
