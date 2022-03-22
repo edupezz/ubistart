@@ -1,25 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import GlobalStyle from './globalStyles';
+import { ApiProvider } from './providers/api';
+
+import Header from './components/header/header';
+import Footer from './components/footer/Footer';
+
+import { BrowserRouter } from 'react-router-dom';
+import Router from './Routes';
+
+import styled from 'styled-components';
 
 function App() {
+
+  const MainContainer = styled.main`
+  
+    height: 70vh;
+    display: flex;
+    background-color: aliceblue;
+    justify-content: space-evenly;
+    align-content: center;
+  `
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <ApiProvider>
+      <GlobalStyle />
+      <BrowserRouter>
+        <Header />
+        <MainContainer>
+          <Router />
+        </MainContainer>
+      </BrowserRouter>
+      <Footer />
+      </ApiProvider>
+    </>
   );
 }
 
